@@ -189,6 +189,7 @@ h1,h2,h3,h4{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-
 .set-list .set-item.on{border-color:var(--wine);background:#fff;box-shadow:0 8px 20px rgba(107,31,58,.12)}
 .set-list .set-item.on i{background:var(--wine);box-shadow:0 0 0 4px rgba(107,31,58,.12)}
 .set-hint{margin-top:14px;font-size:13px;color:var(--ink-3)}
+.set-summary{margin-top:6px;font-size:13.5px;color:var(--wine)}
 .set-list i{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
 
 /* occasions */
@@ -518,6 +519,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         <p>Take the whole set together and everything matches: the same colours, the same lettering, your names on every piece. One message, one delivery, nothing forgotten on the morning of your nikkah.</p>
         <a class="btn btn-wine" id="setCta" href="#contact">Ask for set pricing</a>
         <p class="set-hint">Tap the pieces you want, then choose a colour.</p>
+        <p class="set-summary" id="setSummary"></p>
         <div class="swatches">
           <small>Choose your theme</small>
           <span class="sw on" style="background:#8c1c2e" title="Classic red"></span>
@@ -913,39 +915,63 @@ document.querySelectorAll('.pack-link').forEach(function(a){
   });
 });
 
+/* every WhatsApp action is a real link, so phones open it reliably */
+function waUrl(lines){
+  return 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent([].concat(lines).join('\n'));
+}
+function waGo(lines){
+  var url = waUrl(lines);
+  var win = window.open(url, '_blank', 'noopener');
+  if (!win) window.location.href = url;
+}
+
 /* product Enquire buttons carry the product name */
 document.querySelectorAll('.item-link').forEach(function(a){
-  a.addEventListener('click', function(e){
-    e.preventDefault();
-    var msg = 'Assalam o alaikum! I am interested in the ' + a.dataset.item + '. Could you share the price and details?';
-    window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
-  });
+  a.href = waUrl('Assalam o alaikum! I am interested in the ' + a.dataset.item + '. Could you share the price and details?');
+  a.target = '_blank';
+  a.rel = 'noopener';
 });
 
-/* complete set builder: pick pieces, pick a colour, send one message */
-document.querySelectorAll('.set-item').forEach(function(b){
-  b.addEventListener('click', function(){ b.classList.toggle('on'); });
+/* package buttons carry the package name */
+document.querySelectorAll('.pack-link').forEach(function(a){
+  a.href = waUrl('Assalam o alaikum! I am interested in the ' + a.dataset.pack + '. Could you share the details?');
+  a.target = '_blank';
+  a.rel = 'noopener';
 });
+
+/* complete set builder: pick pieces, pick a colour, see the message update live */
 var setCta = document.getElementById('setCta');
-if (setCta) {
-  setCta.addEventListener('click', function(e){
-    e.preventDefault();
-    var picked = Array.prototype.map.call(document.querySelectorAll('.set-item.on'), function(b){ return b.dataset.item; });
-    var theme = document.querySelector('.sw.on');
-    var lines = ['Assalam o alaikum! I would like pricing for a nikkah set.'];
-    lines.push(picked.length ? 'Pieces: ' + picked.join(', ') : 'Pieces: the complete set');
-    if (theme && theme.title) lines.push('Colour theme: ' + theme.title);
-    window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
-  });
+var setSummary = document.getElementById('setSummary');
+
+function setLines(){
+  var picked = Array.prototype.map.call(document.querySelectorAll('.set-item.on'), function(b){ return b.dataset.item; });
+  var theme = document.querySelector('.sw.on');
+  var lines = ['Assalam o alaikum! I would like pricing for a nikkah set.'];
+  lines.push('Pieces: ' + (picked.length ? picked.join(', ') : 'the complete set'));
+  if (theme && theme.title) lines.push('Colour theme: ' + theme.title);
+  return lines;
 }
+function refreshSet(){
+  if (!setCta) return;
+  var lines = setLines();
+  setCta.href = waUrl(lines);
+  setCta.target = '_blank';
+  setCta.rel = 'noopener';
+  if (setSummary) setSummary.textContent = lines.slice(1).join('  ·  ');
+}
+document.querySelectorAll('.set-item').forEach(function(b){
+  b.addEventListener('click', function(){ b.classList.toggle('on'); refreshSet(); });
+});
 
 /* colour theme choice */
 document.querySelectorAll('.sw').forEach(function(s){
   s.addEventListener('click', function(){
     document.querySelectorAll('.sw').forEach(function(o){ o.classList.remove('on'); });
     s.classList.add('on');
+    refreshSet();
   });
 });
+refreshSet();
 
 /* order form builds a ready WhatsApp message */
 var form = document.getElementById('orderForm');
@@ -961,10 +987,9 @@ if (form) {
     if (val('f-date'))  lines.push('Nikkah date: ' + val('f-date'));
     if (theme && theme.title) lines.push('Theme colour: ' + theme.title);
     if (val('f-note'))  lines.push('Notes: ' + val('f-note'));
-    window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+    waGo(lines);
   });
 }
-
 /* only one FAQ answer open at a time */
 var faqItems = document.querySelectorAll('.faq details');
 faqItems.forEach(function(d){
