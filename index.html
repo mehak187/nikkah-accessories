@@ -77,7 +77,10 @@ h1,h2,h3,h4{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-
 .nav-links a:hover{color:var(--wine)}
 .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
 .nav .btn{padding:13px 26px;font-size:12px}
-.menu-btn{display:none;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:var(--white);cursor:pointer;color:var(--wine);place-items:center}
+.menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--white);cursor:pointer;color:var(--wine);place-items:center;transition:border-color .3s,transform .3s}
+.menu-btn svg{width:18px;height:18px}
+.menu-btn:hover{border-color:var(--gold)}
+.menu-btn[aria-expanded='true']{transform:rotate(90deg);border-color:var(--gold)}
 .mobile-menu{display:none;position:fixed;inset:84px 0 auto 0;background:var(--cream);border-bottom:1px solid var(--line);padding:16px 28px 30px;flex-direction:column;z-index:59}
 .mobile-menu.open{display:flex}
 .mobile-menu a{padding:16px 0;border-bottom:1px solid var(--line);font-size:17px;letter-spacing:.06em}
@@ -122,6 +125,10 @@ h1,h2,h3,h4{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
 /* hero, editorial */
+.hero-orn{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:30px}
+.hero-orn .ln{height:1px;width:clamp(50px,9vw,120px);background:linear-gradient(90deg,transparent,var(--gold))}
+.hero-orn .ln:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+.hero-orn .ur{font-family:"Cormorant Garamond",serif;font-size:clamp(26px,3vw,36px);color:var(--gold);line-height:1.6;direction:rtl}
 .hero-center{text-align:center;max-width:1100px}
 .hero-center .hero-tag{margin-bottom:26px}
 .hero-center h1{font-size:clamp(46px,7.4vw,104px);line-height:.98;letter-spacing:-.025em}
@@ -177,8 +184,11 @@ h1,h2,h3,h4{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-
 .set-band p{color:var(--ink-2);max-width:440px}
 .set-band .btn{margin-top:28px}
 .set-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;position:relative}
-.set-list div{display:flex;align-items:center;gap:12px;padding:14px 18px;background:rgba(255,253,249,.85);border:1px solid var(--line);border-radius:14px;font-size:15px;transition:transform .3s,border-color .3s}
-.set-list div:hover{transform:translateY(-3px);border-color:var(--gold)}
+.set-list .set-item{display:flex;align-items:center;gap:12px;padding:14px 18px;background:rgba(255,253,249,.85);border:1px solid var(--line);border-radius:14px;font-size:15px;font-family:Jost,sans-serif;font-weight:300;color:var(--ink);text-align:left;cursor:pointer;transition:transform .3s,border-color .3s,background .3s}
+.set-list .set-item:hover{transform:translateY(-3px);border-color:var(--gold)}
+.set-list .set-item.on{border-color:var(--wine);background:#fff;box-shadow:0 8px 20px rgba(107,31,58,.12)}
+.set-list .set-item.on i{background:var(--wine);box-shadow:0 0 0 4px rgba(107,31,58,.12)}
+.set-hint{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .set-list i{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
 
 /* occasions */
@@ -339,7 +349,8 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
   .nav-links,.nav .btn{display:none}
   .menu-btn{display:grid}
   .hero{padding:40px 0 80px}
-  .hero-cta .btn{flex:1;justify-content:center;padding:15px 20px}
+  .hero-center .hero-cta{flex-direction:column;align-items:stretch;gap:10px}
+  .hero-cta .btn{width:100%;justify-content:center;padding:15px 18px;font-size:13px;white-space:nowrap}
   .float-card{display:none}
   .products,.promise-grid,.review-band,.steps,.packs{grid-template-columns:1fr}
   .set-band{padding:36px 20px;border-radius:24px;gap:26px}
@@ -397,7 +408,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
   <span class="sparkle" style="top:30%;right:9%;animation-delay:-1.5s"></span>
   <span class="sparkle" style="bottom:30%;left:16%;animation-delay:-2.6s"></span>
   <div class="wrap hero-center">
-    <div class="hero-tag reveal"><i></i>Handmade to order &nbsp;·&nbsp; Delivered across Pakistan</div>
+    <div class="hero-orn reveal"><span class="ln"></span><span class="ur">قبول ہے</span><span class="ln"></span></div>
     <h1 class="reveal">Where love meets<span class="line2 gold">creativity &amp; class</span></h1>
     <p class="lead reveal">Nikkah certificates, boxes, booklets, pens, veils, ring trays and keepsakes, finished by hand with your names, your date and the duas closest to your heart.</p>
     <div class="hero-cta reveal">
@@ -427,6 +438,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
       <div><span>✦</span> Names, dates and duas</div>
       <div><span>✦</span> Preview before we make it</div>
       <div><span>✦</span> Gift wrapped and ready</div>
+      <div><span>✦</span> Delivered across Pakistan</div>
     </div>
   </div>
 </header>
@@ -452,7 +464,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         <div class="p-body">
           <h3>Nikkah Thumb Board</h3>
           <p>Acrylic thumb board with your names, the date and the nikkah dua, with spaces for your thumbprints. Heart shape and premium designs available.</p>
-          <div class="p-foot"><span class="tag">Rs 2,000 to 3,500</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <div class="p-foot"><span class="tag">Rs 2,000 to 3,500</span><a class="item-link" data-item="Nikkah Thumb Board" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
@@ -461,7 +473,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         <div class="p-body">
           <h3>Nikkah Booklet with Box</h3>
           <p>Velvet booklet with its own matching box and nikkah pen, carrying your names and date, so everything stays together long after the day.</p>
-          <div class="p-foot"><span class="tag">Rs 5,500</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <div class="p-foot"><span class="tag">Rs 5,500</span><a class="item-link" data-item="Nikkah Booklet with Box" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
@@ -470,7 +482,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         <div class="p-body">
           <h3>Nikkah Booklet with Pen</h3>
           <p>Velvet booklet for the nikkah nama with your initials and date, finished with a matching pen. Chicken kari and crystal stone finishes available.</p>
-          <div class="p-foot"><span class="tag">From Rs 2,500</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <div class="p-foot"><span class="tag">From Rs 2,500</span><a class="item-link" data-item="Nikkah Booklet with Pen" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
@@ -479,7 +491,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         <div class="p-body">
           <h3>Nikkah Pen</h3>
           <p>Velvet rose and feather pen for the signing, personalised with both names. Couple pens and wooden pens with a box also available.</p>
-          <div class="p-foot"><span class="tag">From Rs 800</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <div class="p-foot"><span class="tag">From Rs 800</span><a class="item-link" data-item="Nikkah Pen" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
@@ -488,7 +500,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         <div class="p-body">
           <h3>Nikah Dupatta</h3>
           <p>Net dupatta with velvet lace and embroidery, personalised with Qubool Hai or your name in Urdu, made for the moment everyone photographs.</p>
-          <div class="p-foot"><span class="tag">Rs 2,500</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <div class="p-foot"><span class="tag">Rs 2,500</span><a class="item-link" data-item="Nikah Dupatta" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
@@ -497,7 +509,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         <div class="p-body">
           <h3>Nikkah Thumb Stand</h3>
           <p>Mirrored stand with pearls and roses, your names and the ayah of your choice, styled to hold the rings and the thumbprints together.</p>
-          <div class="p-foot"><span class="tag">Rs 2,500</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <div class="p-foot"><span class="tag">Rs 2,500</span><a class="item-link" data-item="Nikkah Thumb Stand" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
@@ -509,7 +521,8 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         <span class="eyebrow">Complete nikkah set</span>
         <h3>Everything for the <span class="serif-i gold">big day</span>, in one order</h3>
         <p>Take the whole set together and everything matches: the same colours, the same lettering, your names on every piece. One message, one delivery, nothing forgotten on the morning of your nikkah.</p>
-        <a class="btn btn-wine wa-link" href="#contact">Ask for set pricing</a>
+        <a class="btn btn-wine" id="setCta" href="#contact">Ask for set pricing</a>
+        <p class="set-hint">Tap the pieces you want, then choose a colour.</p>
         <div class="swatches">
           <small>Choose your theme</small>
           <span class="sw on" style="background:#8c1c2e" title="Classic red"></span>
@@ -521,12 +534,12 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         </div>
       </div>
       <div class="set-list">
-        <div><i></i>Nikkah certificate</div>
-        <div><i></i>Nikkah box</div>
-        <div><i></i>Nikkah booklet</div>
-        <div><i></i>Nikkah pen</div>
-        <div><i></i>Nikkah veil</div>
-        <div><i></i>Ring tray</div>
+        <button type="button" class="set-item" data-item="Nikkah thumb board"><i></i>Nikkah thumb board</button>
+        <button type="button" class="set-item" data-item="Nikkah booklet with box"><i></i>Nikkah booklet with box</button>
+        <button type="button" class="set-item" data-item="Nikkah booklet with pen"><i></i>Nikkah booklet with pen</button>
+        <button type="button" class="set-item" data-item="Nikkah pen"><i></i>Nikkah pen</button>
+        <button type="button" class="set-item" data-item="Nikah dupatta"><i></i>Nikah dupatta</button>
+        <button type="button" class="set-item" data-item="Nikkah thumb stand"><i></i>Nikkah thumb stand</button>
       </div>
     </div>
   </div>
@@ -908,7 +921,33 @@ document.querySelectorAll('.pack-link').forEach(function(a){
   });
 });
 
-/* theme swatches, purely visual */
+/* product Enquire buttons carry the product name */
+document.querySelectorAll('.item-link').forEach(function(a){
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    var msg = 'Assalam o alaikum! I am interested in the ' + a.dataset.item + '. Could you share the price and details?';
+    window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+});
+
+/* complete set builder: pick pieces, pick a colour, send one message */
+document.querySelectorAll('.set-item').forEach(function(b){
+  b.addEventListener('click', function(){ b.classList.toggle('on'); });
+});
+var setCta = document.getElementById('setCta');
+if (setCta) {
+  setCta.addEventListener('click', function(e){
+    e.preventDefault();
+    var picked = Array.prototype.map.call(document.querySelectorAll('.set-item.on'), function(b){ return b.dataset.item; });
+    var theme = document.querySelector('.sw.on');
+    var lines = ['Assalam o alaikum! I would like pricing for a nikkah set.'];
+    lines.push(picked.length ? 'Pieces: ' + picked.join(', ') : 'Pieces: the complete set');
+    if (theme && theme.title) lines.push('Colour theme: ' + theme.title);
+    window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+  });
+}
+
+/* colour theme choice */
 document.querySelectorAll('.sw').forEach(function(s){
   s.addEventListener('click', function(){
     document.querySelectorAll('.sw').forEach(function(o){ o.classList.remove('on'); });
