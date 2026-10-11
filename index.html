@@ -166,7 +166,7 @@ h1,h2,h3,h4{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-
 .p-body h3{font-size:29px;margin-bottom:10px}
 .p-body p{font-size:15px;color:var(--ink-2);flex:1}
 .p-foot{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
-.p-foot .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.p-foot .tag{font-family:"Cormorant Garamond",serif;font-size:21px;letter-spacing:0;text-transform:none;color:var(--wine)}
 .p-foot a{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--wine);display:inline-flex;align-items:center;gap:7px;transition:gap .3s}
 .p-foot a:hover{gap:13px}
 
@@ -259,6 +259,15 @@ details p{color:var(--ink-2);margin-top:14px;font-size:16px;max-width:700px;anim
 .pack.best .btn-wine{background:var(--gold-grad);color:#3a2708;box-shadow:none}
 .badge-best{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold-grad);color:#3a2708;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:7px 18px;border-radius:999px;white-space:nowrap;font-weight:500}
 .packs-note{text-align:center;margin-top:26px;font-size:14.5px;color:var(--ink-3)}
+
+/* price list */
+.pricelist{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 44px}
+.pl-group h3{font-family:Jost,sans-serif;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.pl-row{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px dotted var(--line)}
+.pl-row span{font-size:15.5px;color:var(--ink-2)}
+.pl-row b{margin-left:auto;font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:500;color:var(--wine);white-space:nowrap}
+@media (max-width:1024px){.pricelist{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.pricelist{grid-template-columns:1fr;gap:28px}}
 
 /* colour swatches */
 .swatches{display:flex;align-items:center;gap:10px;margin-top:26px;flex-wrap:wrap}
@@ -362,6 +371,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
     <div class="nav-links">
       <a href="#collection">Collection</a>
       <a href="#packages">Packages</a>
+      <a href="#gifts">Gifts</a>
       <a href="#order">How to order</a>
       <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
@@ -375,6 +385,7 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
 <div class="mobile-menu" id="mobileMenu">
   <a href="#collection">Collection</a>
   <a href="#packages">Packages</a>
+      <a href="#gifts">Gifts</a>
   <a href="#order">How to order</a>
   <a href="#reviews">Reviews</a>
   <a href="#faq">FAQ</a>
@@ -439,27 +450,27 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
       <article class="product reveal">
         <div class="p-visual"><img src="img/card-certificate.jpg" alt="Personalised nikkah certificate with names and date" loading="lazy"></div>
         <div class="p-body">
-          <h3>Nikkah Certificate</h3>
-          <p>Your nikkah certificate, printed with both names, the date and the nikkah dua, finished so it can be framed and kept on the wall.</p>
-          <div class="p-foot"><span class="tag">Keepsake</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <h3>Nikkah Thumb Board</h3>
+          <p>Acrylic thumb board with your names, the date and the nikkah dua, with spaces for your thumbprints. Heart shape and premium designs available.</p>
+          <div class="p-foot"><span class="tag">Rs 2,000 to 3,500</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
       <article class="product reveal">
         <div class="p-visual"><img src="img/card-box.jpg" alt="Velvet nikkah box with the couple's names in gold" loading="lazy"></div>
         <div class="p-body">
-          <h3>Nikkah Box</h3>
-          <p>A decorated keepsake box carrying your initials, made to hold the certificate, booklet and pen together long after the day.</p>
-          <div class="p-foot"><span class="tag">Best seller</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <h3>Nikkah Booklet with Box</h3>
+          <p>Velvet booklet with its own matching box and nikkah pen, carrying your names and date, so everything stays together long after the day.</p>
+          <div class="p-foot"><span class="tag">Rs 5,500</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
       <article class="product reveal">
         <div class="p-visual"><img src="img/card-booklet.jpg" alt="Velvet nikkah booklet with the couple's initials in gold" loading="lazy"></div>
         <div class="p-body">
-          <h3>Nikkah Booklet</h3>
-          <p>A booklet for the nikkah nama, finished with your initials in Urdu or English and the date, so the document you sign is kept the way it deserves.</p>
-          <div class="p-foot"><span class="tag">Most loved</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <h3>Nikkah Booklet with Pen</h3>
+          <p>Velvet booklet for the nikkah nama with your initials and date, finished with a matching pen. Chicken kari and crystal stone finishes available.</p>
+          <div class="p-foot"><span class="tag">From Rs 2,500</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
@@ -467,26 +478,26 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         <div class="p-visual"><img src="img/card-pen.jpg" alt="Nikkah pen for the signing" loading="lazy"></div>
         <div class="p-body">
           <h3>Nikkah Pen</h3>
-          <p>The pen you both sign with, dressed with a flower and ribbon to match your set and presented in its own case.</p>
-          <div class="p-foot"><span class="tag">For the signing</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <p>Velvet rose and feather pen for the signing, personalised with both names. Couple pens and wooden pens with a box also available.</p>
+          <div class="p-foot"><span class="tag">From Rs 800</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
       <article class="product reveal">
         <div class="p-visual"><img src="img/card-veil.jpg" alt="Bridal nikkah veil with pearl detailing" loading="lazy"></div>
         <div class="p-body">
-          <h3>Nikkah Veil</h3>
-          <p>A personalised nikkah dupatta with Qubool Hai or your name in Urdu, finished with lace and fringe, made for the moment everyone photographs.</p>
-          <div class="p-foot"><span class="tag">For the bride</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <h3>Nikah Dupatta</h3>
+          <p>Net dupatta with velvet lace and embroidery, personalised with Qubool Hai or your name in Urdu, made for the moment everyone photographs.</p>
+          <div class="p-foot"><span class="tag">Rs 2,500</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
       <article class="product reveal">
         <div class="p-visual"><img src="img/card-tray.jpg" alt="Mirror ring tray with the couple's names and a Quranic verse" loading="lazy"></div>
         <div class="p-body">
-          <h3>Nikkah Ring Tray</h3>
-          <p>A mirrored ring tray with pearls and roses, your names and the ayah of your choice, so the rings are presented the way everyone remembers.</p>
-          <div class="p-foot"><span class="tag">Centre of attention</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
+          <h3>Nikkah Thumb Stand</h3>
+          <p>Mirrored stand with pearls and roses, your names and the ayah of your choice, styled to hold the rings and the thumbprints together.</p>
+          <div class="p-foot"><span class="tag">Rs 2,500</span><a class="wa-link" href="#contact">Enquire ⟶</a></div>
         </div>
       </article>
 
@@ -531,11 +542,11 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
     <div class="packs">
       <div class="pack reveal">
         <h3>Essential</h3>
-        <p class="sub">The pieces you need on the day</p>
-        <div class="price">PKR 4,500<small>Starting from</small></div>
+        <p class="sub">The two pieces you need on the day</p>
+        <div class="price">Rs 2,500<small>Pen and thumb board set</small></div>
         <ul>
-          <li>Nikkah certificate</li>
           <li>Nikkah pen</li>
+          <li>Nikkah thumb board</li>
           <li>Names, date and dua</li>
           <li>Gift wrapped</li>
         </ul>
@@ -546,12 +557,12 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
         <span class="badge-best">Most loved</span>
         <h3>Signature</h3>
         <p class="sub">Our most ordered nikkah set</p>
-        <div class="price">PKR 9,500<small>Starting from</small></div>
+        <div class="price">Rs 5,500<small>Booklet, box and pen</small></div>
         <ul>
-          <li>Nikkah certificate</li>
-          <li>Nikkah box</li>
-          <li>Nikkah booklet</li>
+          <li>Velvet nikkah booklet</li>
+          <li>Matching keepsake box</li>
           <li>Nikkah pen</li>
+          <li>Names and date in gold</li>
           <li>Matching colours and lettering</li>
           <li>Gift wrapped</li>
         </ul>
@@ -559,17 +570,17 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
       </div>
 
       <div class="pack reveal">
-        <h3>Complete</h3>
-        <p class="sub">Everything for the whole ceremony</p>
-        <div class="price">PKR 15,500<small>Starting from</small></div>
+        <h3>Luxury</h3>
+        <p class="sub">Crystal stone set for the whole ceremony</p>
+        <div class="price">Rs 10,500<small>Crystal stone box set</small></div>
         <ul>
-          <li>Everything in Signature</li>
-          <li>Nikkah veil</li>
-          <li>Ring tray</li>
-          <li>Priority making and delivery</li>
+          <li>Crystal stone Arabic booklet</li>
+          <li>Luxury box set</li>
+          <li>Premium nikkah pen</li>
+          <li>Hand crafted crystal work</li>
           <li>Premium gift packaging</li>
         </ul>
-        <a class="btn btn-ghost pack-link" data-pack="Complete package" href="#contact">Enquire</a>
+        <a class="btn btn-ghost pack-link" data-pack="Luxury package" href="#contact">Enquire</a>
       </div>
     </div>
     <p class="packs-note reveal">Prices depend on the design and finish you choose. Message us and we will confirm the exact price for your set.</p>
@@ -598,6 +609,72 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
       <img src="img/card-tray.jpg" alt="Mirror ring tray" loading="lazy">
       <img src="img/card-pen.jpg" alt="Feather nikkah pen" loading="lazy">
       <img src="img/card-veil.jpg" alt="Personalised nikkah dupatta" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gifts" style="padding-top:0">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">More personalised gifts</span>
+      <h2>Not only for <span class="serif-i gold">nikkah days</span></h2>
+      <p>Everything below is personalised with a name, a photo or a message, and wrapped ready to give.</p>
+    </div>
+    <div class="pricelist reveal">
+      <div class="pl-group">
+        <h3>Keepsakes and jewellery</h3>
+        <div class="pl-row"><span>Acrylic Quran pak holder</span><b>Rs 4,000</b></div>
+        <div class="pl-row"><span>Nikkah signature frame</span><b>Rs 1,800</b></div>
+        <div class="pl-row"><span>Hand name bracelet</span><b>Rs 2,200</b></div>
+        <div class="pl-row"><span>Resin customised earrings</span><b>Rs 2,500</b></div>
+        <div class="pl-row"><span>Name bar necklace</span><b>Rs 800</b></div>
+        <div class="pl-row"><span>Name ring</span><b>Rs 250</b></div>
+      </div>
+
+      <div class="pl-group">
+        <h3>Mugs and bottles</h3>
+        <div class="pl-row"><span>Temperature water bottle</span><b>From Rs 1,500</b></div>
+        <div class="pl-row"><span>Coffee temperature glass</span><b>Rs 1,800</b></div>
+        <div class="pl-row"><span>Matt mug with matching pen</span><b>Rs 1,500</b></div>
+        <div class="pl-row"><span>Photo mug</span><b>Rs 800</b></div>
+        <div class="pl-row"><span>Chocolate bouquet</span><b>Rs 2,000</b></div>
+      </div>
+
+      <div class="pl-group">
+        <h3>Frames and prints</h3>
+        <div class="pl-row"><span>3D photo frame with light</span><b>Rs 7,000</b></div>
+        <div class="pl-row"><span>Magic cushion</span><b>Rs 1,200</b></div>
+        <div class="pl-row"><span>Graduation shield</span><b>Rs 1,800</b></div>
+        <div class="pl-row"><span>Mobile cover printing</span><b>Rs 1,500</b></div>
+        <div class="pl-row"><span>Acrylic butterfly clock</span><b>Rs 1,800</b></div>
+      </div>
+
+      <div class="pl-group">
+        <h3>Pens and desk</h3>
+        <div class="pl-row"><span>Metal name pen</span><b>Rs 500</b></div>
+        <div class="pl-row"><span>Name metal pen, pack</span><b>Rs 250</b></div>
+        <div class="pl-row"><span>Wooden pen with box</span><b>Rs 1,500</b></div>
+        <div class="pl-row"><span>Wooden pen with mobile holder</span><b>Rs 1,300</b></div>
+        <div class="pl-row"><span>Wooden diary with pen</span><b>Rs 1,500</b></div>
+        <div class="pl-row"><span>Wooden calendar</span><b>Rs 3,000</b></div>
+      </div>
+
+      <div class="pl-group">
+        <h3>Clothing</h3>
+        <div class="pl-row"><span>Name and photo print T shirt</span><b>Rs 2,000</b></div>
+        <div class="pl-row"><span>Shirt printing</span><b>Rs 1,200</b></div>
+        <div class="pl-row"><span>Heart print couple shirts</span><b>Rs 1,500</b></div>
+        <div class="pl-row"><span>Cap printing</span><b>Rs 800</b></div>
+      </div>
+
+      <div class="pl-group">
+        <h3>Small gifts</h3>
+        <div class="pl-row"><span>Wooden key chain</span><b>Rs 150</b></div>
+        <div class="pl-row"><span>Metal key chain</span><b>Rs 150</b></div>
+        <div class="pl-row"><span>Nikkah gajry</span><b>Rs 3,000</b></div>
+        <div class="pl-row"><span>Couple nikkah pen</span><b>Rs 800</b></div>
+        <div class="pl-row"><span>Corporate orders</span><b>On request</b></div>
+      </div>
     </div>
   </div>
 </section>
@@ -733,12 +810,13 @@ footer .made{margin-top:12px;font-size:12.5px;letter-spacing:.06em}
           <label for="f-item">What you need</label>
           <select id="f-item">
             <option>Complete nikkah set</option>
-            <option>Nikkah certificate</option>
-            <option>Nikkah box</option>
-            <option>Nikkah booklet</option>
+            <option>Nikkah thumb board</option>
+            <option>Nikkah booklet with box</option>
+            <option>Nikkah booklet with pen</option>
             <option>Nikkah pen</option>
-            <option>Nikkah veil</option>
-            <option>Ring tray</option>
+            <option>Nikah dupatta</option>
+            <option>Nikkah thumb stand</option>
+            <option>Mug, bottle or other gift</option>
                         <option>Something else</option>
           </select>
         </div>
